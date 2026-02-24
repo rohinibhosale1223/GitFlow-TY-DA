@@ -1,0 +1,125 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Simple Calculator</title>
+
+    <style>
+      body {
+        font-family: Arial;
+        text-align: center;
+        margin-top: 50px;
+      }
+
+      input {
+        padding: 8px;
+        margin: 5px;
+        width: 120px;
+      }
+
+      button {
+        padding: 10px 15px;
+        margin: 5px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+
+      h2 {
+        color: blue;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h2>Simple Calculator</h2>
+    <h2>Simple Calculator - version 1.2.0</h2>
+    <h2>Simple Calculator - version 1.2.1</h2>
+
+    <!-- Input Numbers -->
+    <input type="number" id="num1" placeholder="Enter first number" />
+    <input type="number" id="num2" placeholder="Enter second number" />
+
+    <br /><br />
+
+    <!-- Operation Buttons -->
+    <button onclick="add()">Add</button>
+    <button onclick="subtract()">Subtract</button>
+    <button onclick="multiply()">Multiply</button>
+    <button onclick="divide()">Divide</button>
+    <button onclick="squareRoot()">Square Root</button>
+    <button onclick="modulus()">Modulus</button>
+    <button onclick="cubeRoot()">Cube Root</button>
+    <button onclick="power()">Power</button>
+    
+    <h3>Result: <span id="result">0</span></h3>
+
+    <script>
+      function getValues() {
+        let a = parseFloat(document.getElementById("num1").value);
+        let b = parseFloat(document.getElementById("num2").value);
+        return [a, b];
+      }
+
+      function add() {
+        let [a, b] = getValues();
+        document.getElementById("result").innerText = a + b;
+      }
+
+      function subtract() {
+        let [a, b] = getValues();
+        document.getElementById("result").innerText = a - b;
+      }
+
+      function multiply() {
+        let [a, b] = getValues();
+        document.getElementById("result").innerText = a * b;
+      }
+
+      function divide() {
+        let [a, b] = getValues();
+        if (b === 0) {
+          document.getElementById("result").innerText = "Cannot divide by zero";
+        } else {
+          document.getElementById("result").innerText = a / b;
+        }
+        function modulus() {
+    let [a, b] = getValues();
+
+    if (b === 0) {
+        document.getElementById("result").innerText = "Cannot mod by zero";
+    } else {
+        document.getElementById("result").innerText = a % b;
+    }
+}
+      }
+
+      function squareRoot() {
+        let a = parseFloat(document.getElementById("num1").value);
+
+        if (a < 0) {
+          document.getElementById("result").innerText = "Invalid input";
+        } else {
+          document.getElementById("result").innerText = Math.sqrt(a);
+        }
+      }
+      function cubeRoot() {
+    let a = parseFloat(document.getElementById("num1").value);
+
+    if (isNaN(a)) {
+        document.getElementById("result").innerText = "Enter a valid number";
+    } else {
+        document.getElementById("result").innerText = Math.cbrt(a);
+    }
+}
+
+      function power() {
+        let [a, b] = getValues();
+        document.getElementById("result").innerText = Math.pow(a, b);
+      }
+
+      function updateVersion() {
+        const versionElement = document.querySelector("h2:nth-child(2)");
+        versionElement.innerText = "Simple Calculator - version 1.2.2";
+      } //added function to update version number test 1
+    </script>
+  </body>
+</html>
